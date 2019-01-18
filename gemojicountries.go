@@ -1,11 +1,10 @@
-package main
+package gemojicountries
 
 import (
 	"bufio"
 	"encoding/csv"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"strings"
 )
@@ -73,8 +72,4 @@ func GetAmountCountryCodesMatched(s string) map[string]int {
 		}
 	}
 	return findings
-}
-
-func main() {
-	log.Printf("%v", GetAmountCountryNamesMatched("Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳"))
 }
