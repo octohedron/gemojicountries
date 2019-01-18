@@ -51,13 +51,18 @@ func GetEncodedUTF8StringLower(s string) string {
 	return strings.ToLower(fmt.Sprintf("%+q", s))
 }
 
-func main() {
-	tSt := GetEncodedUTF8StringLower("Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳")
+// GetAmountCountryNamesMatched returns the names of the countries matched
+// and the amount of each
+func GetAmountCountryNamesMatched(s string) map[string]int {
 	findings := make(map[string]int)
 	for _, v := range EmojiCountryData {
-		if strings.Contains(tSt, v.EmojiCode) {
-			findings[v.CountryCode]++
+		if strings.Contains(GetEncodedUTF8StringLower(s), v.EmojiCode) {
+			findings[v.Country]++
 		}
 	}
-	log.Printf("%v", findings)
+	return findings
+}
+
+func main() {
+	log.Printf("%v", GetAmountCountryNamesMatched("Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳"))
 }
