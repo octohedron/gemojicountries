@@ -35,3 +35,5 @@ PASS
 ok 	0.090s
 Success: Tests passed.
 ```
+
+Contributing? Adding countries and features? Improving performance? Yes. Send PRs 👍
