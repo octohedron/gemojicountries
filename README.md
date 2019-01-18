@@ -28,8 +28,8 @@ func TestCountries(t *testing.T) {
 Will print
 
 ```bash
-=== RUN   TestCountriesString
---- PASS: TestCountriesString (0.00s)
+=== RUN   TestCountries
+--- PASS: TestCountries (0.00s)
 	~.../utils_test.go:132: map[china:1 france:1]
 PASS
 ok 	0.090s
