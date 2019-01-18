@@ -18,9 +18,10 @@ func init() {
 // EmojiCountry is a type for working with emoji country flags
 // country names and country codes
 type EmojiCountry struct {
-	Country     string `json:"country"`
-	EmojiCode   string `json:"emoji_code"`
-	CountryCode string `json:"country_code"`
+	Country     string
+	EmojiRegex  *regexp.Regexp
+	EmojiCode   string
+	CountryCode string
 }
 
 // EmojiCountryData is a slice of EmojiCountry
@@ -38,6 +39,7 @@ func loadCSVData() {
 		}
 		EmojiCountryData = append(EmojiCountryData, EmojiCountry{
 			Country:     strings.ToLower(record[0]),
+			EmojiRegex:  regexp.MustCompile(strings.Replace(strings.ToLower(record[1]), `\`, `\\`, -1)),
 			EmojiCode:   strings.ToLower(record[1]),
 			CountryCode: strings.ToLower(record[2]),
 		})
@@ -57,10 +59,8 @@ func GetEncodedUTF8StringLower(s string) string {
 func GetAmountCountryNamesMatched(s string) map[string]int {
 	findings := make(map[string]int)
 	for _, v := range EmojiCountryData {
-		escaped := strings.Replace(v.EmojiCode, `\`, `\\`, -1)
-		r := regexp.MustCompile(escaped)
 		index := suffixarray.New([]byte(GetEncodedUTF8StringLower(s)))
-		results := index.FindAllIndex(r, -1)
+		results := index.FindAllIndex(v.EmojiRegex, -1)
 		if strings.Contains(GetEncodedUTF8StringLower(s), v.EmojiCode) {
 			findings[v.Country] += len(results)
 		}
@@ -73,10 +73,8 @@ func GetAmountCountryNamesMatched(s string) map[string]int {
 func GetAmountCountryCodesMatched(s string) map[string]int {
 	findings := make(map[string]int)
 	for _, v := range EmojiCountryData {
-		escaped := strings.Replace(v.EmojiCode, `\`, `\\`, -1)
-		r := regexp.MustCompile(escaped)
 		index := suffixarray.New([]byte(GetEncodedUTF8StringLower(s)))
-		results := index.FindAllIndex(r, -1)
+		results := index.FindAllIndex(v.EmojiRegex, -1)
 		if strings.Contains(GetEncodedUTF8StringLower(s), v.EmojiCode) {
 			findings[v.CountryCode] += len(results)
 		}
