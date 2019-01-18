@@ -2,10 +2,10 @@
 
 Go package to extract country names and codes from emoji in text
 
-For example, let's say you have the string `"Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳"`
+For example, let's say you have the string `"Bonjour la france 🇫🇷  🇫🇷 c'est bon aussi 🇨🇳 la chine"`
 
-The func `GetAmountCountryNamesMatched` will return `map[china:1 france:1]`
-And the func `GetAmountCountryCodesMatched` will return `map[cn:1 fr:1]`
+The func `GetAmountCountryNamesMatched` will return `map[china:1 france:2]`
+And the func `GetAmountCountryCodesMatched` will return `map[cn:1 fr:2]`
 
 Example with test
 
@@ -18,19 +18,19 @@ import (
 	"github.com/octohedron/gemojicountries"
 )
 
-const s = "Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳"
 // example with test
-func TestCountries(t *testing.T) {
-	t.Logf("%v", gemojicountries.GetAmountCountryNamesMatched(s))
+func TestCountriesString(t *testing.T) {
+	const s = "Bonjour la france 🇫🇷  🇫🇷 c'est bon aussi 🇨🇳 la chine"
+	t.Logf("%v", gemojicountries.GetAmountCountryCodesMatched(s))
 }
 ```
 
 Will print
 
 ```bash
-=== RUN   TestCountries
---- PASS: TestCountries (0.00s)
-	~.../utils_test.go:132: map[china:1 france:1]
+=== RUN   TestCountriesString
+--- PASS: TestCountriesString (0.00s)
+	../utils_test.go:132: map[china:1 france:2]
 PASS
 ok 	0.090s
 Success: Tests passed.
