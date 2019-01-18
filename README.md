@@ -2,10 +2,15 @@
 
 Go package to extract country names and codes from emoji in text
 
-For example, let's say you have the string `"Bonjour la france 🇫🇷  🇫🇷 c'est bon aussi 🇨🇳 la chine"`
+### Overview
+For example, let's say you have the string `"Bonjour la france 🇫🇷  🇫🇷 c'est bon, aussi la chine 🇨🇳"`
 
-The func `GetAmountCountryNamesMatched` will return `map[china:1 france:2]`
-And the func `GetAmountCountryCodesMatched` will return `map[cn:1 fr:2]`
++ `GetAmountCountryNamesMatched` will return `map[china:1 france:2]`
++ `GetAmountCountryCodesMatched` will return `map[cn:1 fr:2]`
+
+If you want tog et the country codes and you have the country names, i.e. `"russia"`, you can also use the util func
+
++ `GetCountryCodeByCountry` will return `ru`
 
 Example with test
 
