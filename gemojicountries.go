@@ -81,3 +81,16 @@ func GetAmountCountryCodesMatched(s string) map[string]int {
 	}
 	return findings
 }
+
+// GetCountryCodeByCountry returns the country code by passing a string
+// i.e. "france" would return "fr"
+func GetCountryCodeByCountry(country string) string {
+	var t string
+	for _, val := range EmojiCountryData {
+		if val.Country == strings.TrimSpace(country) {
+			t = val.CountryCode
+			return t
+		}
+	}
+	return t
+}
