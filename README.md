@@ -7,14 +7,26 @@ For example, let's say you have the string `"Bonjour la france 🇫🇷 c'est bo
 The func `GetAmountCountryNamesMatched` will return `map[china:1 france:1]`
 And the func `GetAmountCountryCodesMatched` will return `map[cn:1 fr:1]`
 
+Example with test
+
 ```go
+package main
+
+import (
+	"testing"
+
+	"github.com/octohedron/gemojicountries"
+)
+
 const s = "Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳"
 // example with test
 func TestCountries(t *testing.T) {
 	t.Logf("%v", gemojicountries.GetAmountCountryNamesMatched(s))
 }
 ```
+
 Will print
+
 ```bash
 === RUN   TestCountriesString
 --- PASS: TestCountriesString (0.00s)
