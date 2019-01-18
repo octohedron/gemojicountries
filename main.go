@@ -63,6 +63,18 @@ func GetAmountCountryNamesMatched(s string) map[string]int {
 	return findings
 }
 
+// GetAmountCountryCodesMatched returns the countries matched represented by
+// their country codes and the amount of each
+func GetAmountCountryCodesMatched(s string) map[string]int {
+	findings := make(map[string]int)
+	for _, v := range EmojiCountryData {
+		if strings.Contains(GetEncodedUTF8StringLower(s), v.EmojiCode) {
+			findings[v.CountryCode]++
+		}
+	}
+	return findings
+}
+
 func main() {
 	log.Printf("%v", GetAmountCountryNamesMatched("Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳"))
 }
