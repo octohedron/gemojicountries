@@ -43,12 +43,19 @@ func loadCSVData() {
 	}
 }
 
+// GetEncodedUTF8StringLower returns a string encoded in UTF8, i.e. the code
+// points in lower case for using with the emoji_countries.csv file, which is in
+// upper case, as the ones generated from several emoji libraries and used
+// in other programming languages, in Go it's lower case.
+func GetEncodedUTF8StringLower(s string) string {
+	return strings.ToLower(fmt.Sprintf("%+q", s))
+}
+
 func main() {
-	const tSt = "Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳"
-	uS := strings.ToLower(fmt.Sprintf("%+q", tSt))
+	tSt := GetEncodedUTF8StringLower("Bonjour la france 🇫🇷 c'est bon aussi 🇨🇳")
 	findings := make(map[string]int)
 	for _, v := range EmojiCountryData {
-		if strings.Contains(uS, v.EmojiCode) {
+		if strings.Contains(tSt, v.EmojiCode) {
 			findings[v.CountryCode]++
 		}
 	}
