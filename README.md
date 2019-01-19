@@ -8,9 +8,9 @@ For example, let's say you have the string `"Bonjour la france 🇫🇷  🇫�
 + `GetAmountCountryNamesMatched` will return `map[china:1 france:2]`
 + `GetAmountCountryCodesMatched` will return `map[cn:1 fr:2]`
 
-If you want tog et the country codes and you have the country names, i.e. `"russia"`, you can also use the util func
+If you want to get the country codes and you have the country names, i.e. `"russia"`, you can also use the util func
 
-+ `GetCountryCodeByCountry` will return `ru`
++ `GetCountryCodeByCountry` will return `"ru"`
 
 For getting a string with flag emoji with the flags replaced with their string format i.e. `"Bonjour la 🇫🇷 "`
 
