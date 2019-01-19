@@ -88,8 +88,7 @@ func GetCountryCodeByCountry(country string) string {
 	var t string
 	for _, val := range EmojiCountryData {
 		if val.Country == strings.TrimSpace(country) {
-			t = val.CountryCode
-			return t
+			return val.CountryCode
 		}
 	}
 	return t
