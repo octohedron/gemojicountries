@@ -94,3 +94,14 @@ func GetCountryCodeByCountry(country string) string {
 	}
 	return t
 }
+
+// GetStringReplacedEmoji returns the original string replacing each emoji flag
+// with their corresponding name, i.e. "Bonjour la 🇫🇷" would return
+// "Bonjour la france"
+func GetStringReplacedEmoji(s string) string {
+	sb := []byte(GetEncodedUTF8StringLower(s))
+	for _, v := range EmojiCountryData {
+		sb = v.EmojiRegex.ReplaceAll(sb, []byte(v.Country))
+	}
+	return string(sb)
+}
