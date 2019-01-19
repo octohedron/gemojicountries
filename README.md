@@ -12,6 +12,10 @@ If you want tog et the country codes and you have the country names, i.e. `"russ
 
 + `GetCountryCodeByCountry` will return `ru`
 
+For getting a string with flag emoji with the flags replaced with their string format i.e. `"Bonjour la 🇫🇷 "`
+
++ `GetStringReplacedEmoji` will return `"Bonjour la france"`
+
 Example with test
 
 ```go
