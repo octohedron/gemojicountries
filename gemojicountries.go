@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"index/suffixarray"
 	"io"
+	"log"
 	"os"
 	"regexp"
 	"strings"
@@ -28,7 +29,12 @@ type EmojiCountry struct {
 var EmojiCountryData []EmojiCountry
 
 func loadCSVData() {
-	f, _ := os.Open("./emoji_countries.csv")
+	gopath := os.Getenv("GOPATH")
+	f, err := os.Open(gopath + "/src/github.com/octohedron/gemojicountries/emoji_countries.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
 	// Create a new reader.
 	r := csv.NewReader(bufio.NewReader(f))
 	for {
