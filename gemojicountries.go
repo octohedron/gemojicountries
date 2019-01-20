@@ -64,8 +64,8 @@ func GetEncodedUTF8StringLower(s string) string {
 // and the amount of each
 func GetAmountCountryNamesMatched(s string) map[string]int {
 	findings := make(map[string]int)
+	index := suffixarray.New([]byte(GetEncodedUTF8StringLower(s)))
 	for _, v := range EmojiCountryData {
-		index := suffixarray.New([]byte(GetEncodedUTF8StringLower(s)))
 		results := index.FindAllIndex(v.EmojiRegex, -1)
 		if len(results) > 0 {
 			findings[v.Country] += len(results)
@@ -78,8 +78,8 @@ func GetAmountCountryNamesMatched(s string) map[string]int {
 // their country codes and the amount of each
 func GetAmountCountryCodesMatched(s string) map[string]int {
 	findings := make(map[string]int)
+	index := suffixarray.New([]byte(GetEncodedUTF8StringLower(s)))
 	for _, v := range EmojiCountryData {
-		index := suffixarray.New([]byte(GetEncodedUTF8StringLower(s)))
 		results := index.FindAllIndex(v.EmojiRegex, -1)
 		if len(results) > 0 {
 			findings[v.CountryCode] += len(results)
