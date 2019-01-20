@@ -2,11 +2,18 @@
 
 Go package to extract country names and codes from emoji in text
 
+### Install
+```bash
+$ go get -u github.com/octohedron/gemojicountries
+```
+
 ### Overview
 For example, let's say you have the string `"Bonjour la france 🇫🇷  🇫🇷 c'est bon, aussi la chine 🇨🇳"`
 
 + `GetAmountCountryNamesMatched` will return `map[china:1 france:2]`
 + `GetAmountCountryCodesMatched` will return `map[cn:1 fr:2]`
+
+Note that it **only matches emoji**, not the country names
 
 If you want to get the country codes and you have the country names, i.e. `"russia"`, you can also use the util func
 
