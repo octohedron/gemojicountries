@@ -2,8 +2,13 @@
 
 Go package to extract country names and codes from emoji in text
 
+
 ### Install
+
++ Make sure you have your `$GOPATH` set, otherwise 
+
 ```bash
+$ export GOPATH=~/go # Or your gopath location
 $ go get -u github.com/octohedron/gemojicountries
 ```
 
