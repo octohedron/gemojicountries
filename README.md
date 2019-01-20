@@ -5,7 +5,7 @@ Go package to extract country names and codes from emoji in text
 
 ### Install
 
-+ Make sure you have your `$GOPATH` set, otherwise 
++ Make sure you have your `$GOPATH` set and install
 
 ```bash
 $ export GOPATH=~/go # Or your gopath location
