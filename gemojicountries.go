@@ -85,13 +85,14 @@ func GetAmountCountryCodesMatched(s string) map[string]int {
 // GetCountryCodeByCountry returns the country code by passing a string
 // i.e. "france" would return "fr"
 func GetCountryCodeByCountry(country string) string {
-	var t string
+	// make lower case and trim to increase matching chance
+	country = strings.ToLower(strings.TrimSpace(country))
 	for _, val := range EmojiCountryData {
-		if val.Country == strings.TrimSpace(country) {
+		if val.Country == country {
 			return val.CountryCode
 		}
 	}
-	return t
+	return ""
 }
 
 // GetStringReplacedEmoji returns the original string replacing each emoji flag
