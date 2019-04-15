@@ -101,6 +101,17 @@ func GetCountryCodeByCountry(country string) string {
 	return ""
 }
 
+// GetCountryByCountryCode returns the country code by passing a string
+// i.e. "fr" would return "france"
+func GetCountryByCountryCode(countryCode string) string {
+	for _, val := range EmojiCountryData {
+		if val.CountryCode == countryCode {
+			return val.Country
+		}
+	}
+	return ""
+}
+
 // GetStringReplacedEmoji returns the original string replacing each emoji flag
 // with their corresponding name, i.e. "Bonjour la 🇫🇷" would return
 // "Bonjour la france"
